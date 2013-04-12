@@ -5,11 +5,25 @@
 <%= form_tag expenses_path, :method => 'get' do %>
     <%= hidden_field_tag :direction, params[:direction] %>
     <%= hidden_field_tag :sort, params[:sort] %>
-    <p>
+   <div class="row">
+    <div class = "large-4 columns">
+      <p>
       <%= text_field_tag :search, params[:search] %>
       <%= submit_tag "Search", :name => nil %>
-    </p>
+      </p>
+    </div>
+    <div class = "form_row large-4 columns">
+       <label for="theme">Results per page </label>
+        <% [10, 25, 50, 100, 1000].each do |records| %>
+            <%= radio_button_tag 'records', records, @records == records %>
+            <%= records %>
+        <% end %>
+    </div>
+
+    </div>
+    </div>
 <% end %>
+
 
 <table>
   <tr>
