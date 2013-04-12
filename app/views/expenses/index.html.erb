@@ -1,19 +1,39 @@
 <h1>Expenses</h1>
 
-<%= content_tag :div, "", id: "expenses_chart", data: { expenses: @expenses } %>
+<div class="row">
+  <div class="large-6 columns">
+    <h3 class="subheader"> All Search Records </h3>
+    <%= content_tag :div, "", id: "expenses_chart", data: { expenses: @expenses } %> 
+  </div>
+  <div class="large-6 columns">
+    <h3 class="subheader"> Last 4 weeks</h3>
+    <%= content_tag :div, "", id: "expenses_chart1", data: { expenses: expenses_chart1_data } %>
+  </div>
+  <div class="large-4 columns">
+    
+  </div>
+
+</div>
+
+
+
+
 
 <%= form_tag expenses_path, :method => 'get' do %>
     <%= hidden_field_tag :direction, params[:direction] %>
     <%= hidden_field_tag :sort, params[:sort] %>
+
    <div class="row">
     <div class = "large-4 columns">
       <p>
       <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "Search", :name => nil %>
+      <%= submit_tag "Search", :name => nil, class: "button" %>
       </p>
     </div>
+
+
     <div class = "form_row large-4 columns">
-       <label for="theme">Results per page </label>
+       <label for="records">Results per page </label>
         <% [10, 25, 50, 100, 1000].each do |records| %>
             <%= radio_button_tag 'records', records, @records == records %>
             <%= records %>
@@ -24,6 +44,7 @@
     </div>
 <% end %>
 
+<%= link_to 'New Expense', new_expense_path, class: "button" %>
 
 <table>
   <tr>
@@ -56,4 +77,4 @@
 <br />
 
 
-<%= link_to 'New Expense', new_expense_path %>
+<%= link_to 'New Expense', new_expense_path, class: "button" %>
