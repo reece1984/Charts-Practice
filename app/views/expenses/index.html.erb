@@ -4,11 +4,12 @@
 
 <table>
   <tr>
-    <th width="200">Name</th>
-    <th width="200">Description</th>
-    <th width="200">Amount</th>
-    <th width="200">Vat</th>
-    <th width="200">User</th>
+    <th width="200"><%= sortable "name" %></th>
+    <th width="200"><%= sortable "description" %></th>
+    <th width="200"><%= sortable "amount" %></th>
+    <th width="200"><%= sortable "vat" %></th>
+    <th width="200"><%= sortable "user_id", "User" %></th>
+    <th width="200"><%= sortable "created_at", "Date" %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -21,6 +22,7 @@
     <td><%= expense.amount %></td>
     <td><%= expense.vat %></td>
     <td><%= expense.user %></td>
+    <td><%= l expense.created_at, format: :short %></td>
     <td><%= link_to 'Show', expense %></td>
     <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
     <td><%= link_to 'Destroy', expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
