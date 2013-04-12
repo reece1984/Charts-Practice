@@ -1,4 +1,7 @@
 Composer::Application.routes.draw do
+  resources :expenses
+
+
   authenticated :user do
     root :to => 'home#index'
   end
