@@ -9,47 +9,20 @@
     <h3 class="subheader"> All records greater than £100</h3>
     <%= content_tag :div, "", id: "expenses_chart1", data: { expenses: expenses_chart1_data } %>
   </div>
-  <div class="large-4 columns">
-    
-  </div>
 
 </div>
+<%= will_filter_tag(@expenses)  %>
 
-<%= form_tag expenses_path, :method => 'get' do %>
-    <%= hidden_field_tag :direction, params[:direction] %>
-    <%= hidden_field_tag :sort, params[:sort] %>
-
-   <div class="row">
-    <div class = "large-4 columns">
-      <p>
-      <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "Search", :name => nil, class: "button" %>
-      </p>
-    </div>
-
-
-    <div class = "form_row large-4 columns">
-       <label for="records">Results per page </label>
-        <% [10, 25, 50, 100, 1000].each do |records| %>
-            <%= radio_button_tag 'records', records, @records == records %>
-            <%= records %>
-        <% end %>
-    </div>
-
-    </div>
-    </div>
-<% end %>
-
-<%= link_to 'New Expense', new_expense_path, class: "button" %>
+<%= link_to 'New Expense', new_expense_path, class: "button", id: "new_expense_button" %>
 
 <table>
   <tr>
-    <th width="200"><%= sortable "name" %></th>
-    <th width="200"><%= sortable "description" %></th>
-    <th width="200"><%= sortable "amount" %></th>
-    <th width="200"><%= sortable "vat" %></th>
-    <th width="200"><%= sortable "user_id", "User" %></th>
-    <th width="200"><%= sortable "created_at", "Date" %></th>
+    <th width="200">Name</th>
+    <th width="200">Description</th>
+    <th width="200">Amount</th>
+    <th width="200">VAT</th>
+    <th width="200">User</th>
+    <th width="200">Created at</th>
     <th></th>
     <th></th>
     <th></th>
@@ -69,7 +42,7 @@
   </tr>
 <% end %>
 </table>
-<%= will_paginate @expenses %>
+
 <br />
 
 

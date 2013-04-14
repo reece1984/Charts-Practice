@@ -40,6 +40,7 @@ user.add_role :user
 
 puts 'CREATING EXPENSES'
 
+7.times do 
 Expense.create(name: "Lunch", description: "At the Ritz", amount: 500, vat: "true", user_id: 1, created_at: 10.weeks.ago)
 Expense.create(name: "Dinner", description: "At the Ivy", amount: 600, vat: "false", user_id: 4, created_at: 10.weeks.ago)
 Expense.create(name: "Lunch", description: "At the Rennaisance", amount: 200, vat: "true", user_id: 1, created_at: 9.weeks.ago)
@@ -68,6 +69,6 @@ Expense.create(name: "Stationary", description: "Pens", amount: 200, vat: "true"
 Expense.create(name: "Lunch", description: "At the Ritz", amount: 300, vat: "true", user_id: 6, created_at: 8.weeks.ago)
 Expense.create(name: "Miscellanous", description: "Various Items", amount: 25, vat: "false", user_id: 6, created_at: 10.weeks.ago)
 
-
+end
 
 

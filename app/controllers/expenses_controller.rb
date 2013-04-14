@@ -2,12 +2,8 @@ class ExpensesController < ApplicationController
   # GET /expenses
   # GET /expenses.json
 
-  helper_method :sort_column, :sort_direction
-
   def index
-    @records = params[:records]
-    @expenses = Expense.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => @records, :page => params[:page])
-
+    @expenses = Expense.filter(params: params)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @expenses }
