@@ -6,7 +6,7 @@
     <%= content_tag :div, "", id: "expenses_chart", data: { expenses: @expenses } %> 
   </div>
   <div class="large-6 columns">
-    <h3 class="subheader"> Last 4 weeks</h3>
+    <h3 class="subheader"> All records greater than £100</h3>
     <%= content_tag :div, "", id: "expenses_chart1", data: { expenses: expenses_chart1_data } %>
   </div>
   <div class="large-4 columns">
@@ -14,10 +14,6 @@
   </div>
 
 </div>
-
-
-
-
 
 <%= form_tag expenses_path, :method => 'get' do %>
     <%= hidden_field_tag :direction, params[:direction] %>
@@ -63,7 +59,7 @@
   <tr>
     <td><%= expense.name %></td>
     <td><%= expense.description %></td>
-    <td><%= expense.amount %></td>
+    <td><%= number_to_currency(expense.amount, unit: "&pound;") %></td>
     <td><%= expense.vat %></td>
     <td><%= expense.user %></td>
     <td><%= l expense.created_at, format: :short %></td>
@@ -77,4 +73,3 @@
 <br />
 
 
-<%= link_to 'New Expense', new_expense_path, class: "button" %>
