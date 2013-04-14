@@ -1,10 +1,18 @@
   <div class="row">
-    <div class="large-3 columns">
-      <h1><%= link_to "Composer", root_path, :id => 'brand' %></h1>
+    
+    <div class="large-5 columns">
+      <h1><%= link_to "Expenses", root_path, :id => 'brand' %></h1>
     </div>
-    <div class="large-9 columns">
-      <ul class="button-group right">
+    <div class="large-7 columns">
+      <ul class="button-group">
+
       <% if user_signed_in? %>
+        <% if current_page?(expenses_path) %>
+          <li><a href="#charts" class="button">Charts</a></li>
+          <li><a href="#expense_filter" class="button">Filter</a></li>
+          <li><a href="#data" class="button">Data</a></li>
+
+        <% end %>
         <li>
         <%= link_to 'Expenses', expenses_path, class: "button" unless current_page?( expenses_path) %>
         </li>

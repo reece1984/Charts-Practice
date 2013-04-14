@@ -1,4 +1,3 @@
-<h1>Expenses</h1>
 
 <div class="row">
   <div class="large-6 columns">
@@ -11,9 +10,23 @@
   </div>
 
 </div>
+
+<h3 id="expense_filter" class="subheader">Create a filter</h2>
+
 <%= will_filter_tag(@expenses)  %>
 
-<%= link_to 'New Expense', new_expense_path, class: "button", id: "new_expense_button" %>
+
+
+<div class="row" id="data">
+  <div class="large-2 columns">
+    <h3 class="subheader">Table View</h2>
+  </div>
+  <div class="large-3 columns left">
+  <%= link_to 'New Expense', new_expense_path, class: "button", id: "new_expense_button" %>
+  </div>
+</div>
+
+
 
 <table>
   <tr>
